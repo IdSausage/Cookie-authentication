@@ -84,7 +84,7 @@ app.post("/register" , (req,res) => {
 		const salt1 = await bcrypt.genSalt(10);
 		hash_password = await bcrypt.hash(password , salt1);
 	}
-
+	encryption();
 	var sql = mysql.format("INSERT INTO users (password,hashed_password) VALUES (? ,?)" ,[password,hash_password]);
 
 	connection.query(sql , (err,rows) => {
